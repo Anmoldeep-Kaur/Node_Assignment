@@ -4,17 +4,20 @@
 <head>
     <title>TO DO List</title>
     <script defer async src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" ></script>
     <link href="style.css" rel="stylesheet">
     
 </head>
 
 <body align="center">
+    <script>
+        getTodos()
+    </script>
     <div class="title">
         <h2>Task And Notes Manager</h2>
     </div>
     <ul id="taskList">
-        <li>First Task</li>
-        <li>Second Task</li>
+        
 
     </ul>
     <h2>Add New Task Below</h2>
@@ -28,6 +31,15 @@
                     </td>
                     <td>
                         <input id="title" type="text" maxlength="50" required>
+                    </td>
+                    <td>
+                        <select>
+                            <option selected>Sort By</option>
+                            <option>Due Date</option>
+                            <option >Priority</option>
+                            <option>Status/option>
+
+                        </select>
                     </td>
                 </tr>
                 <tr>
@@ -75,14 +87,26 @@
                         <label for="notes">Notes</label>
                     </td>
                     <td>
-                        <textarea id="notes" rows="3" cols="30"></textarea>
+                        <ul id="notes">
+
+                        </ul>
 
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <input type="button" id="submit" onclick="addTask()">ADD</button>
                         
+                        
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" id="newNotes" placeholder="Add Notes Here">
+                        <input type=button id=addNotes onclick="showNotes()" value="ADD NOTES">
+                        <input type="button" id="submit" onclick="addTask()" value="ADD TASK">
+                        
+ 
                     </td>
                 </tr>
             </table>

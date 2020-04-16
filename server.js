@@ -1,21 +1,23 @@
-const express=require('express');
-const app=express();
-const tasks=require('./database');
+const express = require('express')
 
-const bodyParser=require('body-parser');
+const { db } = require('./database')
+const todoRoute = require('./routes/todos')
 
-app.use(express.json());
-app.use('/',express.static(__dirname +'/public'));
-app.use(bodyParser.json());
+const app = express()
 
-//app.use('/tasks',taskRoute);
-app.get('/',function(req,res){
-    res.sendFile("index.html");
-})
-app.post('/tasks',async (req,res)=>{
-    console.log("post called")
-    tasks.write(req.body).then( res.status(201).send({ success: 'New task added'}));
- });
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
 
-app.listen(3434);
-module.exports={app,tasks};
+app.use('/', express.static(__dirname + '/public'))
+
+app.use('/todos', todoRoute)
+
+db.sync()
+  .then(() => {
+    app.listen(6543)
+  })
+  .catch((err) => {
+    console.error(err)
+  })
+
+

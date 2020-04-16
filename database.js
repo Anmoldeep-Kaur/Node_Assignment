@@ -8,7 +8,12 @@ const db = new sequelize({
 
 //Defining table in Database
 const tasks = db.define('tasks', {
-    
+    id:{
+        type:sequelize.INTEGER,
+        primaryKey:true,
+        autoIncrement:true
+
+    },
     title: {
         type: sequelize.STRING(100),
         allowNull: false
@@ -29,21 +34,10 @@ const tasks = db.define('tasks', {
     priority: {
         type: sequelize.STRING
 
+    },
+    notes:{
+        type:sequelize.STRING(300)
     }
 });
 
-async function write(body){
-       console.log("write called");
-       await db.sync({alter:true})
-       await tasks.create({
-           title:`${body.title}`,
-           description:`${body.description}`,
-           dueDate:`${body.dueDate}`,
-           status:`${body.status}`,
-           priority:`${body.priority}`
 
-       })
-    }
-    module.exports={
-        db,tasks,write
-    }
