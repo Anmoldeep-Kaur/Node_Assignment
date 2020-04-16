@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>TO DO List</title>
+    <script defer async src="script.js"></script>
+    <link href="style.css" rel="stylesheet">
+    
+</head>
+
+<body align="center">
+    <div class="title">
+        <h2>Task And Notes Manager</h2>
+    </div>
+    <ul id="taskList">
+        <li>First Task</li>
+        <li>Second Task</li>
+
+    </ul>
+    <h2>Add New Task Below</h2>
+<div>
+    <form id="addToDo" action="/" method="POST">
+        
+            <table class="table">
+                <tr>
+                    <td class="form-sub-label">
+                        <label for="title">Title*</label>
+                    </td>
+                    <td>
+                        <input id="title" type="text" maxlength="50" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="form-sub-label">
+                        <label for="description">Description</label>
+                    </td>
+                    <td>
+                        <input type="text" id="description" maxlength="100"></textarea>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td class="form-sub-label">
+                        <label for="dueDate">Due Date*</label>
+                    </td>
+                    <td>
+                        <input id="dueDate" type="date" value="" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td class='form-sub-label'>
+                        <label for="priority">Priority*</label>
+                    </td>
+                    <td>
+
+                        <input type="radio" name="priority" id="low">
+                        <label for="low">Low</label>
+                        <input type="radio" name="priority" id="medium" checked>
+                        <label for="medium">Medium</label>
+                        <input type="radio" name="priority" id="high">
+                        <label for="high">High</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class='form-sub-label'>
+                        <label for="status">Status*</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="status" disabled>
+                        <label for="complete">Completed</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class='form-sub-label'>
+                        <label for="notes">Notes</label>
+                    </td>
+                    <td>
+                        <textarea id="notes" rows="3" cols="30"></textarea>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" id="submit" onclick="addTask()">ADD</button>
+                        
+                    </td>
+                </tr>
+            </table>
+    </form>        
+</div>
+</body>
+</html>
