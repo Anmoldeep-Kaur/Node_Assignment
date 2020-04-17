@@ -3,7 +3,7 @@ const { Todos } = require('../database')
 
 const route = Router()
 
-route.get('/:sortvalue', async(req, res) => {
+route.get('/:sort', async(req, res) => {
 
   const sort = req.params.sortvalue;
   const todos = await Todos.findAll({
@@ -80,12 +80,11 @@ route.post('/:id/note',async(req,res) => {
   }
   const todo = await Todos.findByPk(req.params.id)
 
-  // console.log(typeof todo.notes)
-  // const stringToAppend = ', ' + req.body.note
+
   
   todo.notes = req.body.note
   console.log(todo.notes)
-  console.log('**********')
+ 
   console.log(typeof req.body.note)
   await todo.save()
   res.status(201).send({success: 'New Notes Added', data: todo})
@@ -131,7 +130,6 @@ route.patch('/:id',async (req,res)=>{
  
       todo.status= req.body.update_status
       
-           //db save
            await todo.save()
   res.status(201).send({success:"Updated Successfully",data:todo})
 })

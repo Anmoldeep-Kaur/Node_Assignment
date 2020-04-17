@@ -35,7 +35,7 @@ const tasks = db.define('tasks', {
         type: sequelize.STRING
 
     },
-    notes:{
+    note:{
         type:sequelize.STRING(300)
     }
 });
